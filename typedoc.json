@@ -1,0 +1,7 @@
+{
+  "inputFiles": ["./libs/jabal/src"],
+  "out": "./dist/docs/",
+  "tsconfig": "./libs/jabal/tsconfig.json",
+  "exclude": ["**/*+(index|.spec|.e2e).ts"],
+  "json": "./dist/docs/jabal-api.json"
+}

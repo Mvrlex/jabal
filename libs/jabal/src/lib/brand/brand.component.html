@@ -1,0 +1,8 @@
+<a [routerLink]="routerLink">
+  <ng-container *ngIf="!keepSvg; else includeSvg">
+    <img [attr.height]="getHeight()" [attr.src]="src" alt="Logo">
+  </ng-container>
+  <ng-template #includeSvg>
+    <object type="image/svg+xml" [attr.data]="src"></object>
+  </ng-template>
+</a>

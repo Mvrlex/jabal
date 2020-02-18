@@ -1,0 +1,7 @@
+<div class="custom-control custom-checkbox">
+  <input type="checkbox" (change)="onChange($event.target.checked)" (blur)="onTouched()" [checked]="checked" [disabled]="disabled" [indeterminate]="indeterminate"
+         class="custom-control-input" [id]="id" [attr.value]="value">
+  <label class="custom-control-label" [for]="id">
+    <ng-content></ng-content>
+  </label>
+</div>

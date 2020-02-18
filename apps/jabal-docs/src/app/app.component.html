@@ -1,0 +1,22 @@
+<h3 class="notice text-center bg-warning p-4">
+  Under construction!
+</h3>
+
+<jbl-navbar [dark]="true">
+  <jbl-nav-item routerLink="/home">Home</jbl-nav-item>
+  <jbl-nav-item routerLink="/docs">Documentation</jbl-nav-item>
+  <jbl-nav-item routerLink="/tutorial">Tutorial</jbl-nav-item>
+  <jbl-nav-item routerLink="/changelog">Changelog</jbl-nav-item>
+  <div class="py-1">
+    <a href="https://getbootstrap.com/">
+      <fa-icon class="fa-lg text-light" [icon]="['fab', 'bootstrap']"></fa-icon>
+    </a>
+    <a href="https://github.com/Mvrlex/jabal/issues/">
+      <fa-icon class="fa-lg text-light ml-4" [icon]="['fas', 'bug']"></fa-icon>
+    </a>
+    <a href="https://github.com/Mvrlex/jabal/">
+      <fa-icon class="fa-lg text-light ml-4" [icon]="['fab', 'github']"></fa-icon>
+    </a>
+  </div>
+</jbl-navbar>
+<router-outlet></router-outlet>

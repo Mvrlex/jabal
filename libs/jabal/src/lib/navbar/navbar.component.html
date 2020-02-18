@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg border-bottom flex-wrap" [ngClass]="getTheme()">
+  <div class="w-100" [ngClass]="getContainer()">
+    <!-- Logo -->
+    <div class="navbar-brand empty-hide">
+      <ng-content select="jbl-brand"></ng-content>
+    </div>
+    <!-- Toggle Button -->
+    <button (click)="toggle()" class="navbar-toggler" type="button" [attr.aria-expanded]="isOpen" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" [ngClass]="{'show': isOpen}">
+      <!-- Left aligned (reserved for nav-items) -->
+      <ul class="navbar-nav mr-auto">
+        <ng-content select="jbl-nav-item"></ng-content>
+      </ul>
+      <!-- Right aligned -->
+      <div class="empty-hide d-flex align-items-center">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumb on seperate line -->
+  <div class="w-100" [ngClass]="getContainer()">
+    <ng-content select="jbl-breadcrumb"></ng-content>
+  </div>
+</nav>

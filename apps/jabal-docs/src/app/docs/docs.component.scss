@@ -1,0 +1,8 @@
+.nav-link.active + .sub-nav {
+  display: block !important;
+}
+
+.sub-nav a {
+  font-weight: lighter !important;
+  font-size: .9rem;
+}

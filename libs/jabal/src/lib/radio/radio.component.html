@@ -1,0 +1,7 @@
+<div class="custom-control custom-radio">
+  <input type="radio" (change)="onChange($event.target.checked)" (blur)="onTouched()" [checked]="checked" [disabled]="disabled"
+         class="custom-control-input" [id]="id" [attr.value]="value" [attr.name]="name">
+  <label class="custom-control-label" [for]="id">
+    <ng-content></ng-content>
+  </label>
+</div>

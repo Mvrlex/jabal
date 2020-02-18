@@ -1,0 +1,26 @@
+{
+  "npmScope": "jabal",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "jabal-docs": {
+      "tags": ["scope:docs"],
+      "implicitDependencies": ["jabal"]
+    },
+    "jabal-docs-e2e": {
+      "tags": ["scope:docs"],
+      "implicitDependencies": ["jabal-docs"]
+    },
+    "jabal": {
+      "tags": ["scope:lib"]
+    }
+  }
+}

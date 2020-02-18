@@ -1,0 +1,17 @@
+<footer class="border-top p-2" [ngClass]="getTheme()">
+  <div class="d-flex justify-content-between" [ngClass]="getContainer()">
+
+    <div class="footer-left" [ngClass]="{'flex-wrap': wrap}">
+      <ng-content></ng-content> <!-- slot="left" -->
+    </div>
+
+    <div class="footer-center">
+      <ng-content select="[slot='center']"></ng-content>
+    </div>
+
+    <div class="footer-right">
+      <ng-content select="[slot='right']"></ng-content>
+    </div>
+
+  </div>
+</footer>

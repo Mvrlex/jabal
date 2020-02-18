@@ -1,0 +1,49 @@
+<!--
+    One element displays the key and its data if there are no more children.
+    Otherwise it recursively generates children entries for the next data values
+    and wraps those new elements with [] or {}.
+ -->
+<li>
+
+  <!-- KEY -->
+  <!-- "key":_ or nothing for arrays-->
+  <span *ngIf="propertyKey" class="json-key-group">
+    <button *ngIf="isObject() || isArray()" (click)="toggleVisibility()">
+      <fa-icon [icon]="getToggleIcon()"></fa-icon>
+    </button>
+    <span class="json-key">{{propertyKey}}:&nbsp;</span>
+  </span>
+
+  <!-- VALUE -->
+  <span class="json-prop-group" [ngClass]="getWrapperCharClass()">
+
+    <!-- IS OBJECT -->
+    <!-- { ... } or [ ... ] -->
+    <ul *ngIf="isObject() || isArray(); else showValue" [ngClass]="getVisibilityClass()">
+      <jbl-json-editor-entry
+        *ngFor="let subProp of getSubObjectProperties(), let index = index"
+        [propertyKey]="isArray() ? index.toString() : subProp.key"
+        [propertyData]="subProp.value">
+      </jbl-json-editor-entry>
+    </ul>
+
+    <!-- IS VALUE -->
+    <!-- "stringValue" or true/false or 123 -->
+    <ng-template #showValue>{{propertyData}}</ng-template>
+    <!-- TODO Make editable -->
+    <!--
+    <ng-template #showValue>
+      <ng-container [ngSwitch]="_propertyType">
+        <input *ngSwitchCase="'string'" type="text" [value]="propertyData" [style.width.ch]="getValueLength()">
+        <input *ngSwitchCase="'number'" type="number" [value]="propertyData" [style.width.ch]="getValueLength()">
+        <select *ngSwitchCase="'boolean'" [value]="propertyData">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </ng-container>
+    </ng-template>
+    -->
+
+  </span>
+
+</li>

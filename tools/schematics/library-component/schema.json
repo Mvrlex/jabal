@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "library-component",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Component name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the component?"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project to add the component to",
+      "x-prompt": "Into which project should the component be generated?"
+    }
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "ngx-jabal",
+  "version": "0.1.0",
+  "description": "Just Another Bootstrap Angular Library",
+  "author": "Marcel Kaleta",
+  "license": "MIT",
+  "publishConfig":{
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@angular/common": "^8.2.4",
+    "@angular/core": "^8.2.4"
+  }
+}

@@ -1,0 +1,40 @@
+<div class="row h-75">
+
+  <main class="col-sm-12 col-md-7 col-lg-8 d-flex align-items-center justify-content-center flex-column my-4">
+    <div class="w-100 d-flex align-items-center justify-content-center flex-column flex-sm-row">
+      <h1 class="display-3 d-sm-none">Jabal</h1>
+      <h1 class="display-1 font-weight-bold d-none d-sm-block">Jabal</h1>
+    </div>
+    <h1 class="d-none d-xl-block"><b>J</b>ust <b>A</b>nother <b>B</b>ootstrap <b>A</b>ngular <b>L</b>ibrary</h1>
+    <h4 class="d-none d-sm-block">Quality of life components for <a href="https://getbootstrap.com/">Bootstrap</a>.</h4>
+    <div>
+      <button type="button" class="btn btn-lg btn-dark m-2 m-md-4" [routerLink]="['../docs']">To the docs</button>
+      <button type="button" class="btn btn-lg btn-outline-dark m-2 m-md-4" [routerLink]="['../docs']">Read more</button>
+    </div>
+  </main>
+
+  <section class="col-sm-12 col-md-5 col-lg-4 bg-light p-4">
+    <h1 class="text-center display-4 d-none d-sm-block">Interested?</h1>
+    <div>
+      <h2>
+        <fa-icon class="mr-2" [icon]="['fas', 'download']"></fa-icon>
+        Install
+      </h2>
+      <hr>
+      <p>Install Jabal over npm and gain access to all the features you are currently missing out on.</p>
+      <code class="d-block pb-3">npm install ngx-jabal</code>
+      <p>After installing you can include any of our modules into your project to access our components.</p>
+      <code class="d-block pb-3">@NgModule({{ "{" }} imports: [BreadcrumbModule] {{ "}" }})</code>
+      <p>What are you waiting for?</p>
+      <button class="btn btn-lg btn-dark" [routerLink]="['../docs']">
+        Get something working
+        <fa-icon class="ml-2" [icon]="['fas', 'chevron-right']"></fa-icon>
+      </button>
+    </div>
+  </section>
+
+  </div>
+
+<footer class="w-100 h-25 bg-dark text-light d-flex align-items-center justify-content-center flex-column">
+  <h5>Copyright 2020</h5>
+</footer>

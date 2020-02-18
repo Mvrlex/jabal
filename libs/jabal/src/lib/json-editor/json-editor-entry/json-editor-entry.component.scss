@@ -1,0 +1,104 @@
+ul {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  cursor: default;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: transparent 1px solid;
+  border-radius: .5rem;
+  padding: 0;
+  margin-left: calc(-1rem + -0.3rem);
+  width: 1rem;
+  height: 1rem;
+  transition: background-color .2s ease-out, border-color .2s ease-out;
+  outline: none;
+  &:hover {
+    border-color: #F1F1F1;
+    background-color: #F1F1F1;
+  }
+}
+
+button + .json-key {
+  margin-left: .3rem;
+}
+
+// TODO fix
+:host::ng-deep ul > ngx-json-editor-entry:not(:last-of-type) li::after {
+  content: ",";
+}
+
+input, select {
+  font-family: monospace;
+  border: none;
+  cursor: pointer;
+  transition: background-color .2s ease-out;
+  &:hover, &:focus {
+    background-color: #F1F1F1;
+  }
+  &:focus {
+    cursor: text;
+  }
+}
+
+select {
+  appearance: none;
+}
+
+// Insert quotes and brackets
+.json-prop {
+  &-quotes {
+    &::before {
+      content: "\"";
+    }
+    &::after {
+      content: "\"";
+    }
+    &:focus-within {
+      &::before {
+        content: none;
+      }
+      &::after {
+        content: none;
+      }
+    }
+  }
+  &-brackets {
+    &-square {
+      &::before {
+        content: "[";
+      }
+      &::after {
+        content: "]";
+      }
+    }
+    &-curly {
+      &::before {
+        content: "{";
+      }
+      &::after {
+        content: "}";
+      }
+    }
+  }
+}
+
+// Visiblity of objects
+.json-prop {
+  &-hidden {
+    display: inline-block;
+    padding: 0;
+    margin: 0 .5em;
+    & > * {
+      display: none;
+    }
+    &::before {
+      content: "...";
+    }
+  }
+}

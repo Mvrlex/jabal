@@ -1,0 +1,95 @@
+<h1>Breadcrumb</h1>
+
+<jbl-breadcrumb></jbl-breadcrumb>
+
+<h1>Test Form</h1>
+
+<form>
+  <div class="form-row">
+    <div class="col-12 col-lg-6">
+      <div class="form-group form-row">
+        <label class="col-3 col-form-label" for="select-1">Example select</label>
+        <div class="col-9">
+          <select class="form-control" id="select-1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group form-row align-items-center">
+        <label class="col-3 col-form-label" for="text-1">Email address</label>
+        <div class="col-9">
+          <div class="form-check form-check-inline">
+            <jbl-radio name="test">Radio 1</jbl-radio>
+          </div>
+          <div class="form-check form-check-inline">
+            <jbl-radio name="test">Radio 2</jbl-radio>
+          </div>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label class="col-3 col-form-label" for="select-2">Example select</label>
+        <div class="col-9">
+          <select class="form-control" id="select-2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label class="col-3 col-form-label" for="select-3">Example select</label>
+        <div class="col-9">
+          <select class="form-control" id="select-3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="form-group form-row">
+        <div class="form-check form-check-inline col-12 ">
+          <jbl-checkbox [jblReadonly]>Check me out</jbl-checkbox>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <div class="form-check form-check-inline col-12 ">
+          <jbl-checkbox>Check me out</jbl-checkbox>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label class="col-3 col-form-label" for="text-1">Email address</label>
+        <div class="col-9">
+          <input type="email" class="form-control" id="text-1" placeholder="Enter email">
+          <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label class="col-3 col-form-label" for="text-2">Email address</label>
+        <div class="col-9">
+          <input type="email" class="form-control" id="text-2" placeholder="Enter email">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h1>JSON-Viewer</h1>
+
+<jbl-json-editor [data]="data"></jbl-json-editor>
+
+<ng-template #footer>
+  <button class="btn btn-light">My Button 1</button>
+  <button class="btn btn-light">My Button 2</button>
+  <button class="btn btn-light">My Button 3</button>
+</ng-template>

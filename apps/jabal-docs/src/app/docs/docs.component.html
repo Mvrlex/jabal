@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- TODO Generate -->
+    <ul class="nav flex-column col-2">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['getting-started']">Getting Started</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['components']" routerLinkActive="active">Components</a>
+        <ul class="nav sub-nav d-none">
+          <li class="nav-item">
+            <a class="nav-link">Brand</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Breadcrumb</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Checkbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Footer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Json Editor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Navbar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Radio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Readonly</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['changelog']">Changelog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['examples']">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['about']">About</a>
+      </li>
+    </ul>
+
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>
+
+<jbl-footer fixed="fixed" wrap="wrap" dark="dark">
+  <ng-container slot="left">
+    <button class="btn btn-light">STATIC LEFT</button>
+    <jbl-insertion></jbl-insertion>
+  </ng-container>
+  <button class="btn btn-light" slot="center">STATIC CENTER</button>
+  <button class="btn btn-light" slot="right">STATIC RIGHT</button>
+</jbl-footer>

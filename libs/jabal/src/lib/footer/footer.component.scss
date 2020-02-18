@@ -1,0 +1,14 @@
+// Grow to full width and keep center centred
+.footer-left, .footer-right {
+  flex: 1;
+}
+
+.footer-left, .footer-center, .footer-right {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right {
+  justify-content: flex-end;
+}
