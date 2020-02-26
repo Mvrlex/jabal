@@ -19,15 +19,23 @@ import { AboutComponent } from './about/about.component';
       {
         path: '', component: DocsComponent, children: [ // /docs/...
           {path: 'getting-started', component: GettingStartedComponent},
-          {path: 'components',
+          {
+            path: 'components',
             children: [
-              {path: 'navbar', loadChildren: () => import('./components/navbar/navbar-docs.module').then(m => m.NavbarDocsModule) }
+              {
+                path: 'navbar',
+                loadChildren: () => import('./components/navbar/navbar-docs.module').then(m => m.NavbarDocsModule)
+              },
+              {
+                path: 'checkbox',
+                loadChildren: () => import('./components/checkbox/checkbox-docs.module').then(m => m.CheckboxDocsModule)
+              }
             ]
           },
           {path: 'changelog', component: ChangelogComponent},
-          {path: 'examples', component: ExamplesComponent, data: { breadcrumb: 'Examples' }},
+          {path: 'examples', component: ExamplesComponent, data: {breadcrumb: 'Examples'}},
           {path: 'about', component: AboutComponent}
-        ], data: { breadcrumb: 'Home' }
+        ], data: {breadcrumb: 'Home'}
       }
     ])
   ],

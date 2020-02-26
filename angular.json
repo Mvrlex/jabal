@@ -25,8 +25,19 @@
               "apps/jabal-docs/src/favicon.ico",
               "apps/jabal-docs/src/assets"
             ],
-            "styles": ["apps/jabal-docs/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/jabal-docs/src/styles.scss",
+              "apps/jabal-docs/src/theme/prism.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
+            ],
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-markup.min.js",
+              "node_modules/prismjs/components/prism-typescript.min.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+            ]
           },
           "configurations": {
             "production": {

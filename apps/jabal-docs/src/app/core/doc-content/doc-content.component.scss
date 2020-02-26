@@ -1,0 +1,7 @@
+:host::ng-deep tab pre[class*="language-"] {
+  border-top: none;
+}
+
+:host::ng-deep tabset {
+  display: block;
+}

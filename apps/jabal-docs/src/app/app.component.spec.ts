@@ -14,10 +14,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ngui-docs'`, () => {
+  it(`should have as title 'jbl-docs'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ngui-docs');
+    expect(app.title).toEqual('jbl-docs');
   });
 
   it('should render title', () => {

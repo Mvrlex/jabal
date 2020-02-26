@@ -45,7 +45,6 @@
     "help": "nx help"
   },
   "dependencies": {
-    "@nrwl/angular": "8.12.2",
     "@angular/animations": "^8.2.0",
     "@angular/common": "^8.2.0",
     "@angular/compiler": "^8.2.0",
@@ -58,7 +57,10 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@nrwl/angular": "8.12.2",
     "core-js": "^2.5.4",
+    "ngx-bootstrap": "^5.3.2",
+    "ngx-markdown": "^9.0.0",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
   },
@@ -73,7 +75,7 @@
     "@nrwl/cypress": "8.12.2",
     "@nrwl/workspace": "8.12.2",
     "@types/jest": "24.0.9",
-    "@types/node": "~8.9.4",
+    "@types/node": "^8.9.5",
     "codelyzer": "~5.0.1",
     "commitizen": "^4.0.3",
     "commitlint": "^8.3.5",

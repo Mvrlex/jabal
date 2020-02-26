@@ -1,0 +1,21 @@
+<div class="mt-4" *ngFor="let doc of docConfig">
+  <h1 [ngClass]="getHeaderSize()" [class]="doc.titleClass" *ngIf="doc.title">{{doc.title}}</h1>
+  <markdown *ngIf="doc.text">
+    {{doc.text}}
+  </markdown>
+  <ng-container *ngIf="doc.example">
+    <ng-container *ngComponentOutlet="doc.example"></ng-container>
+  </ng-container>
+  <tabset class="mt-4" *ngIf="doc.code">
+    <tab heading="Template" *ngIf="doc.code.html">
+      <markdown [data]="doc.code.html | language : 'markup'"></markdown>
+    </tab>
+    <tab heading="Component" *ngIf="doc.code.ts">
+      <markdown [data]="doc.code.ts | language : 'typescript'"></markdown>
+    </tab>
+    <tab heading="Style" *ngIf="doc.code.css">
+      <markdown [data]="doc.code.css | language : 'css'"></markdown>
+    </tab>
+  </tabset>
+  <docs-doc-content *ngIf="doc.subDocs" [docConfig]="doc.subDocs"></docs-doc-content>
+</div>
