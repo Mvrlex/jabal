@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
-const NGUI_RADIO_VALUE_ACCESSOR: any = {
+const JBL_RADIO_VALUE_ACCESSOR: any = {
   provide : NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => RadioComponent),
   multi : true
@@ -14,7 +14,7 @@ const NGUI_RADIO_VALUE_ACCESSOR: any = {
   selector: 'jbl-radio',
   templateUrl: './radio.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers : [NGUI_RADIO_VALUE_ACCESSOR]
+  providers : [JBL_RADIO_VALUE_ACCESSOR]
 })
 export class RadioComponent implements ControlValueAccessor {
   static ID = 0;

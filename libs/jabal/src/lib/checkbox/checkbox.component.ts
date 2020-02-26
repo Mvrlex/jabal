@@ -25,7 +25,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() checked: boolean;
   @Input() disabled: boolean;
   @Input() indeterminate: boolean;
-  @Input() id = `ngui-checkbox-${CheckboxComponent.ID++}`;
+  @Input() id = `jbl-checkbox-${CheckboxComponent.ID++}`;
   @Input() value: any = null;
   // @Input() name: string = null;
 
