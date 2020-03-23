@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Checkbox",
+    "titleClass": "display-4",
+    "text": "./content/desc-checkbox.md",
+    "subDocs": [
+      {
+        "title": "Installation",
+        "text": "./content/usage-checkbox.md"
+      },
+      {
+        "title": "Features",
+        "subDocs": [
+          {
+            "title": "Basic",
+            "text": "./examples/basic/basic-checkbox.md",
+            "example": "BasicCheckboxComponent",
+            "code": {
+              "html": "./examples/basic/basic-checkbox.component.html",
+              "ts": "./examples/basic/basic-checkbox.component.ts"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Troubleshooting",
+        "text": "./content/troubleshooting-checkbox.md"
+      }
+    ]
+  }
+]

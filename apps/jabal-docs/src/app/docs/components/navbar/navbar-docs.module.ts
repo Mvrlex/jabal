@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
 import { NavbarModule } from "@jabal/jabal";
 
 import { BasicNavbarComponent, SlottedNavbarComponent } from "./examples";
-import { CoreModule, DocConfig, DocContentComponent } from "../../../core/core.module";
+import { DocConfig, DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
 
 const docConfig: DocConfig[] = [
   {
@@ -51,10 +50,7 @@ const docConfig: DocConfig[] = [
   imports: [
     CommonModule,
     NavbarModule,
-    CoreModule,
-    RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: DocContentComponent, data: {docConfig: docConfig} }
-    ])
+    DocGeneratorModule.forRoot({ docConfig: docConfig })
   ],
   declarations: [
     BasicNavbarComponent,
