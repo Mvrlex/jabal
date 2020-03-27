@@ -5,7 +5,7 @@ import { CheckboxModule } from "@jabal/jabal";
 import { BasicCheckboxComponent } from "./examples";
 import { DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
 
-import docConfig from './checkbox-docs.config.json';
+import { docConfig } from './checkbox-docs.config';
 
 @NgModule({
   imports: [
