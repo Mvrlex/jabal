@@ -11,3 +11,7 @@ export * from './lib/insertion/insertion.service';
 export * from './lib/json-editor/json-editor.module';
 export * from './lib/navbar/navbar.module';
 export * from './lib/radio/radio.module';
+export * from './lib/readonly/readonly.module';
+export * from './lib/router-data/router-data.module'
+
+export * from './lib/shared';

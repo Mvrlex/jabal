@@ -2,11 +2,11 @@
   <ol class="breadcrumb">
     <li *ngFor="let route of breadcrumb; let last = last" [ngClass]="{'active' : last}" class="breadcrumb-item">
       <ng-container *ngIf="!last; else nameOnly">
-        <a [routerLink]="route.url">{{route.name}}</a>
+        <a [routerLink]="route.url">{{route.data}}</a>
       </ng-container>
       <!-- Last element is displayed without link -->
       <ng-template #nameOnly>
-        {{route.name}}
+        {{route.data}}
       </ng-template>
     </li>
   </ol>

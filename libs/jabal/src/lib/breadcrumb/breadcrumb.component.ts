@@ -11,7 +11,8 @@ import {
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from "@angular/router";
 import { filter, map, skipWhile, startWith, tap } from "rxjs/operators";
 import { Subscription } from "rxjs";
-import { BreadcrumbItem } from "./breadcrumb-item";
+import { RouterDataService } from "../router-data/router-data.service";
+import { RouteData } from "../router-data/route-data";
 
 export const BREADCRUMB_ROUTE_DATA_NAME = new InjectionToken<string>(
   'Name of the data property of a route to be used inside a breadcrumb'
@@ -22,7 +23,7 @@ export const BREADCRUMB_ROUTE_DATA_NAME = new InjectionToken<string>(
  *
  * Declared in: {@link BreadcrumbModule}
  *
- * @property {BreadcrumbItem} breadcrumb - custom breadcrumb items
+ * @property {RouteData} breadcrumb - custom breadcrumb items
  * @property {boolean} skipUpdate - disables updating the breadcrumb on router changes
  *
  * @event routeChange - the {@link NavigationEnd} router event, on which the breadcrumb listens to, for implementing custom breadcrumb logic
@@ -36,7 +37,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   private breadcrumbSub: Subscription;
 
   @Input()
-  breadcrumb: BreadcrumbItem[];
+  breadcrumb: RouteData[];
 
   @Input()
   skipUpdate = false;
@@ -48,7 +49,8 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     @Inject(BREADCRUMB_ROUTE_DATA_NAME) private breadcrumbRouteDataName: string,
-    private changeDetection: ChangeDetectorRef
+    private changeDetection: ChangeDetectorRef,
+    private routerData: RouterDataService
   ) { }
 
   ngOnInit() {
@@ -60,32 +62,6 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Recursively builds the breadcrumb items from the {@link ActivatedRoute}.
-   * @param route - the route from which to build the current breadcrumb
-   * @param url - the current url string
-   * @param breadcrumbs - the current breadcrumbs
-   */
-  private build(route: ActivatedRoute, url: string = '', breadcrumbs: BreadcrumbItem[] = []): BreadcrumbItem[] {
-    // Update URL
-    const currentPath = route.routeConfig ? route.routeConfig.path : '';
-    const currentFullUrl = currentPath ? `${url}/${currentPath}` : url;
-    // Create breadcrumb if breadcrumb data attribute is set
-    if (route.routeConfig && route.routeConfig.data && route.routeConfig.data[this.breadcrumbRouteDataName]) {
-      const breadcrumbItem = {
-        name: route.routeConfig.data[this.breadcrumbRouteDataName],
-        url: currentFullUrl
-      };
-      breadcrumbs.push(breadcrumbItem);
-    }
-    // Next
-    if (route.firstChild) {
-      return this.build(route.firstChild, currentFullUrl, breadcrumbs);
-    }
-    // End
-    return breadcrumbs;
-  }
-
-  /**
    * Subscribes to the {@link Router} and listens reacts upon {@link NavigationEnd} events.
    */
   private initRouterEventListener() {
@@ -93,9 +69,9 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       skipWhile(() => this.skipUpdate),
       filter((event: RouterEvent) => event instanceof NavigationEnd), // Only build upon NavigationEnd
       tap(() => this.routeChange.emit()),
-      map(() => this.build(this.activatedRoute.root)), // Build new breadcrumbs
-      startWith(this.build(this.activatedRoute.root)) // Initial build
-    ).subscribe((breadcrumb: BreadcrumbItem[]) => {
+      map(() => this.routerData.getDataFromTraverse(this.activatedRoute.root, this.breadcrumbRouteDataName)), // Build new breadcrumbs
+      startWith(this.routerData.getDataFromTraverse(this.activatedRoute.root, this.breadcrumbRouteDataName)) // Initial build
+    ).subscribe((breadcrumb: RouteData[]) => {
       this.breadcrumb = breadcrumb; // TODO add append functionality
       this.changeDetection.detectChanges(); // Manual change detection because of OnPush
     });

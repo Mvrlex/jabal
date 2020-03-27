@@ -24,11 +24,13 @@ import { AboutComponent } from './about/about.component';
             children: [
               {
                 path: 'navbar',
-                loadChildren: () => import('./components/navbar/navbar-docs.module').then(m => m.NavbarDocsModule)
+                loadChildren: () => import('./components/navbar/navbar-docs.module').then(m => m.NavbarDocsModule),
+                data: { component: 'Navbar' }
               },
               {
                 path: 'checkbox',
-                loadChildren: () => import('./components/checkbox/checkbox-docs.module').then(m => m.CheckboxDocsModule)
+                loadChildren: () => import('./components/checkbox/checkbox-docs.module').then(m => m.CheckboxDocsModule),
+                data: { component: 'Checkbox' }
               }
             ]
           },

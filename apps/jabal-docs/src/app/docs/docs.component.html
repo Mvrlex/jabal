@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <div class="row">
 
-    <!-- TODO Generate -->
     <ul class="nav flex-column col-2">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['getting-started']">Getting Started</a>
@@ -9,32 +8,8 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['components']" routerLinkActive="active">Components</a>
         <ul class="nav sub-nav d-none">
-          <li class="nav-item">
-            <a class="nav-link">Brand</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Breadcrumb</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['components/checkbox']">Checkbox</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Footer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Form</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Json Editor</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['components/navbar']">Navbar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Radio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Readonly</a>
+          <li class="nav-item" *ngFor="let route of componentRoutes">
+            <a class="nav-link" [routerLink]="['components', route.url]">{{route.data}}</a>
           </li>
         </ul>
       </li>

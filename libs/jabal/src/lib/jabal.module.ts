@@ -10,6 +10,7 @@ import { JsonEditorModule } from "./json-editor/json-editor.module";
 import { NavbarModule } from "./navbar/navbar.module";
 import { RadioModule } from "./radio/radio.module";
 import { ReadonlyModule } from "./readonly/readonly.module";
+import { RouterDataModule } from "./router-data/router-data.module";
 
 const components = [
   BrandModule,
@@ -21,7 +22,8 @@ const components = [
   JsonEditorModule,
   NavbarModule,
   RadioModule,
-  ReadonlyModule
+  ReadonlyModule,
+  RouterDataModule
 ];
 
 @NgModule({

@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
+import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { BREADCRUMB_ROUTE_DATA_NAME, BreadcrumbComponent } from "./breadcrumb.component";
-import { BreadcrumbItem } from "./breadcrumb-item";
+import { RouterDataModule } from "../router-data/router-data.module";
 
-export { BREADCRUMB_ROUTE_DATA_NAME, BreadcrumbItem }; // Reexport
+export { BREADCRUMB_ROUTE_DATA_NAME }; // Reexport
 
 // Default value for the BREADCRUMB_ROUTE_DATA_NAME token
 const defaultRouteDataName = 'breadcrumb';
@@ -19,7 +19,11 @@ const defaultRouteDataName = 'breadcrumb';
  * wrapper routes do not make an appearance inside of the breadcrumb, and that the correct routing names are used.
  */
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    RouterDataModule
+  ],
   declarations: [BreadcrumbComponent],
   exports: [BreadcrumbComponent],
   providers: [
@@ -27,7 +31,7 @@ const defaultRouteDataName = 'breadcrumb';
   ]
 })
 export class BreadcrumbModule {
-  static forRoot(config: {routeDataName?: string}) {
+  static forRoot(config: {routeDataName?: string}): ModuleWithProviders {
     return {
       ngModule: BreadcrumbModule,
       providers: [
