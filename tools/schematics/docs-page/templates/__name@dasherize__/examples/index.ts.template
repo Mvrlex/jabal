@@ -1,0 +1,1 @@
+export { Basic<%= classify(name) %>Component } from "./basic/basic-<%= dasherize(name) %>.component";

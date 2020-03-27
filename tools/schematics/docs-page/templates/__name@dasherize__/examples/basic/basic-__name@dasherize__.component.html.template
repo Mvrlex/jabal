@@ -1,0 +1,3 @@
+<p>
+  basic-<%= dasherize(name) %> works!
+</p>

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "library-component",
+  "id": "docs-page",
   "type": "object",
   "properties": {
     "name": {

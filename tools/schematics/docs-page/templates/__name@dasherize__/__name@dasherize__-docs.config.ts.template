@@ -1,0 +1,45 @@
+import { DocConfig } from "../../../core/doc-generator/doc-generator.module";
+
+// Examples
+import { Basic<%= classify(name) %>Component } from "./examples";
+
+// Markdown
+import description from 'raw-loader!./content/desc-<%= dasherize(name) %>.md';
+import usage from 'raw-loader!./content/usage-<%= dasherize(name) %>.md';
+import troubleshooting from 'raw-loader!./content/troubleshooting-<%= dasherize(name) %>.md';
+// @ts-ignore Basic example
+import exampleBasicTs from '!!raw-loader!./examples/basic/basic-<%= dasherize(name) %>.component.ts';
+import exampleBasicHtml from 'raw-loader!./examples/basic/basic-<%= dasherize(name) %>.component.html';
+import exampleBasic from 'raw-loader!./examples/basic/basic-<%= dasherize(name) %>.md';
+
+export const docConfig: DocConfig[] = [
+  {
+    title: '<%= classify(name) %>',
+    titleClass: 'display-4',
+    text: description,
+    subDocs: [
+      {
+        title: 'Installation',
+        text: usage
+      },
+      {
+        title: 'Features',
+        subDocs: [
+          {
+            title: 'Basic',
+            text: exampleBasic,
+            example: Basic<%= classify(name) %>Component,
+            code: {
+              html: exampleBasicHtml,
+              ts: exampleBasicTs
+            }
+          }
+        ]
+      },
+      {
+        title: 'Troubleshooting',
+        text: troubleshooting
+      }
+    ]
+  }
+];

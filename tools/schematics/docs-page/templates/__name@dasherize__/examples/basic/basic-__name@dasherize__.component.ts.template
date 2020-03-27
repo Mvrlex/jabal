@@ -1,0 +1,7 @@
+import { Component } from "@angular/core";
+
+@Component({
+  selector: 'docs-basic-<%= dasherize(name) %>',
+  templateUrl: './basic-<%= dasherize(name) %>.component.html'
+})
+export class Basic<%= classify(name) %>Component {}

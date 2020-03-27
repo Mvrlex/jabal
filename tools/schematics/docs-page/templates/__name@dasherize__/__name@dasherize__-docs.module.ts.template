@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { Basic<%= classify(name) %>Component } from "./examples";
+
+import { DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
+import { docConfig } from "./<%= dasherize(name) %>-docs.config";
+
+@NgModule({
+  imports: [
+    CommonModule,
+    DocGeneratorModule.forRoot({ docConfig: docConfig })
+  ],
+  declarations: [
+    Basic<%= classify(name) %>Component
+  ],
+  entryComponents: [
+    Basic<%= classify(name) %>Component
+  ]
+})
+export class <%= classify(name) %>DocsModule { }
