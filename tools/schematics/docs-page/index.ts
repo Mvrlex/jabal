@@ -14,6 +14,8 @@ import { strings } from '@angular-devkit/core';
 import { join, parse, ParsedPath } from 'path';
 import { getProjectConfig } from "@nrwl/workspace";
 
+import docsExampleSchematic from '../docs-example';
+
 import { Schema } from "./schema";
 
 export default function(_options: Schema): Rule {
@@ -24,7 +26,11 @@ export default function(_options: Schema): Rule {
 
   return (tree: Tree, _context: SchematicContext) => {
     return chain([
-      generateFiles(_options)
+      generateFiles(_options),
+      docsExampleSchematic({
+        name: join(_options.path, _options.name, '/examples/basic'),
+        project: _options.project
+      })
     ])(tree, _context);
   };
 }
@@ -40,6 +46,8 @@ function generateFiles(_options: Schema): Rule {
         move(join(projectRoot, 'app', _options.path)) // Move to
       ]
     );
-    return chain([mergeWith(templateSource)])(tree, _context);
+    return chain([
+      mergeWith(templateSource)
+    ])(tree, _context);
   }
 }
