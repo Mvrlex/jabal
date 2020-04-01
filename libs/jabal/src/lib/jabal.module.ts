@@ -26,6 +26,10 @@ const components = [
   RouterDataModule
 ];
 
+/**
+ * This Module exports every component of the library, it should only be imported if you are using all of them.
+ * Use the respective module of a component for the smallest footprint.
+ */
 @NgModule({
   imports: [components],
   exports: [components]
