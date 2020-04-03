@@ -1,5 +1,8 @@
 <div class="mt-4" *ngFor="let doc of docConfig">
-  <h1 [ngClass]="getHeaderSize()" [class]="doc.titleClass" *ngIf="doc.title">{{doc.title}}</h1>
+  <h1 [ngClass]="getHeaderSize()" class="docs-title" [class]="doc.titleClass" *ngIf="doc.title" [id]="getFragment(doc)">
+    {{doc.title}}
+    <a routerLink="." [fragment]="getFragment(doc)">#</a>
+  </h1>
   <markdown *ngIf="doc.text" [data]="doc.text"></markdown>
   <ng-container *ngIf="doc.example">
     <ng-container *ngComponentOutlet="doc.example"></ng-container>

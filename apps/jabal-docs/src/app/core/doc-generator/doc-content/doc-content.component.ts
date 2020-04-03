@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentFactoryResolver,
   Host, Inject,
   InjectionToken,
   Input,
@@ -8,6 +7,7 @@ import {
   Optional,
   SkipSelf
 } from '@angular/core';
+import { dasherize } from "@nrwl/workspace/src/utils/strings";
 import { DocConfig } from "../doc-generator.module";
 
 export const DOC_CONFIG = new InjectionToken<DocConfig[]>(
@@ -32,22 +32,16 @@ export class DocContentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    // Get current header size from parent if exists
     if (this.parentDocs) this._currentHeaderSize = this.parentDocs._currentHeaderSize + 1;
-
-    // Get docConfig from route data if not already set
-    if (
-      !this.docConfig &&
-      this.injectedDocConfig
-    ) {
-      this.docConfig = this.injectedDocConfig;
-    }
-
+    if (!this.docConfig && this.injectedDocConfig) this.docConfig = this.injectedDocConfig;
   }
 
   getHeaderSize() {
-    return 'h' + this._currentHeaderSize;
+    return `h${this._currentHeaderSize}`;
+  }
+
+  getFragment(doc: DocConfig) {
+    return dasherize(doc.title);
   }
 
 }
