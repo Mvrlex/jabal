@@ -1,0 +1,11 @@
+<div class="mt-4">
+
+  <!-- Current generated docs -->
+  <ng-container #docs></ng-container>
+
+  <!-- Sub docs -->
+  <ng-container *ngIf="config.children">
+    <docs-group *ngFor="let node of config.children" [config]="node" ></docs-group>
+  </ng-container>
+
+</div>

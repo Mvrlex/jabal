@@ -95,7 +95,10 @@
               "apps/jabal-docs/tsconfig.app.json",
               "apps/jabal-docs/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/jabal-docs/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/jabal-docs/**"
+            ]
           }
         },
         "test": {
@@ -103,7 +106,8 @@
           "options": {
             "jestConfig": "apps/jabal-docs/jest.config.js",
             "tsConfig": "apps/jabal-docs/tsconfig.spec.json",
-            "setupFile": "apps/jabal-docs/src/test-setup.ts"
+            "setupFile": "apps/jabal-docs/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       }
@@ -129,8 +133,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/jabal-docs-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/jabal-docs-e2e/**"]
+            "tsConfig": [
+              "apps/jabal-docs-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/jabal-docs-e2e/**"
+            ]
           }
         }
       }
@@ -155,7 +164,10 @@
               "libs/jabal/tsconfig.lib.json",
               "libs/jabal/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/jabal/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/jabal/**"
+            ]
           }
         },
         "test": {
@@ -163,7 +175,43 @@
           "options": {
             "jestConfig": "libs/jabal/jest.config.js",
             "tsConfig": "libs/jabal/tsconfig.spec.json",
-            "setupFile": "libs/jabal/src/test-setup.ts"
+            "setupFile": "libs/jabal/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "docs-generator": {
+      "projectType": "library",
+      "root": "libs/docs-generator",
+      "sourceRoot": "libs/docs-generator/src",
+      "prefix": "docs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/docs-generator/tsconfig.lib.json",
+              "libs/docs-generator/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/docs-generator/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/docs-generator/jest.config.js",
+            "tsConfig": "libs/docs-generator/tsconfig.spec.json",
+            "setupFile": "libs/docs-generator/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },

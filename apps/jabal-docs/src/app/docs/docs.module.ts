@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from "@angular/router";
 import { JabalModule } from "@jabal/jabal";
+import { DefaultNodesModule } from "@jabal/docs-generator";
 
 import { DocsComponent } from './docs.component';
 import { GettingStartedComponent } from "./getting-started/getting-started.component";
@@ -14,6 +15,7 @@ import { AboutComponent } from './about/about.component';
   imports: [
     CommonModule,
     JabalModule,
+    DefaultNodesModule,
     RouterModule.forChild([
       {path: '', pathMatch: 'full', redirectTo: 'getting-started'}, // /docs
       {

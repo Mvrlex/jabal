@@ -1,0 +1,7 @@
+<nav class="sticky-top">
+  <ul class="list-unstyled">
+    <li *ngFor="let entry of navbarEntries" [ngClass]="{ 'h5 m-0': activeFragment === entry.node.id }" class="nav-link">
+      <a routerLink="." [fragment]="entry.node.id">{{entry.title}}</a>
+    </li>
+  </ul>
+</nav>

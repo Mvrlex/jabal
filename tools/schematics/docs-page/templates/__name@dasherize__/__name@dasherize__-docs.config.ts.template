@@ -1,23 +1,22 @@
-import { DocConfig } from "../../../core/doc-generator/doc-generator.module";
+import { Node, TitleComponent, MarkdownComponent } from "@jabal/docs-generator";
 
 // Markdown
 import description from 'raw-loader!./content/desc-<%= dasherize(name) %>.md';
 import usage from 'raw-loader!./content/usage-<%= dasherize(name) %>.md';
 
-export const docConfig: DocConfig[] = [
+export const nodeConfig: Node[] = [
   {
-    title: '<%= classify(name) %>',
-    titleClass: 'display-4',
-    text: description,
-    subDocs: [
+    id: '<%= dasherize(name) %>',
+    nodes: [
+      new TitleComponent({ title: '<%= classify(name) %>', titleClass: 'display-4', skipNavbar: true }),
+      new MarkdownComponent({ text: description })
+    ],
+    children: [
       {
-        title: 'Installation',
-        text: usage
-      },
-      {
-        title: 'Features',
-        subDocs: [
-          // Add the docs you want to generate
+        id: 'installation',
+        nodes: [
+          new TitleComponent({ title: 'Installation' }),
+          new MarkdownComponent({ text: usage })
         ]
       }
     ]

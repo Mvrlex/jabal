@@ -1,0 +1,13 @@
+<div class="row" #container>
+
+  <!-- Generated docs -->
+  <main class="col">
+    <docs-group *ngFor="let node of resolvedConfig" [config]="node"></docs-group>
+  </main>
+
+  <!-- Right page nav -->
+  <div class="col-3 d-none d-lg-block">
+    <docs-subnav [relativeTo]="container"></docs-subnav>
+  </div>
+
+</div>

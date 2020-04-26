@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarModule } from "@jabal/jabal";
 
+import { DocsGeneratorModule, NODE_CONFIG } from "@jabal/docs-generator";
+import { nodeConfig } from "./navbar-docs.config";
+
+import { NavbarModule } from "@jabal/jabal";
 import { BasicNavbarComponent, SlottedNavbarComponent } from "./examples";
-import { DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
-import { docConfig } from "./navbar-docs.config";
 
 @NgModule({
   imports: [
     CommonModule,
-    NavbarModule,
-    DocGeneratorModule.forRoot({ docConfig: docConfig })
+    DocsGeneratorModule,
+    NavbarModule
   ],
   declarations: [
     BasicNavbarComponent,
@@ -19,6 +20,12 @@ import { docConfig } from "./navbar-docs.config";
   entryComponents: [
     BasicNavbarComponent,
     SlottedNavbarComponent
+  ],
+  providers: [
+    {
+      provide: NODE_CONFIG,
+      useValue: nodeConfig
+    }
   ]
 })
 export class NavbarDocsModule { }

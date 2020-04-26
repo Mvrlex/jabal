@@ -1,29 +1,33 @@
 <div class="container-fluid">
   <div class="row">
 
-    <ul class="nav flex-column col-2">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['getting-started']">Getting Started</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['components']" routerLinkActive="active">Components</a>
-        <ul class="nav sub-nav d-none">
-          <li class="nav-item" *ngFor="let route of componentRoutes">
-            <a class="nav-link" [routerLink]="['components', route.url]">{{route.data}}</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['changelog']">Changelog</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['examples']">Examples</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['about']">About</a>
-      </li>
-    </ul>
+    <!-- Left doc navbar -->
+    <div class="col-2 d-none d-md-block">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['getting-started']">Getting Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['components', componentRoutes[0].url]">Components</a>
+          <ul class="nav sub-nav">
+            <li class="nav-item" *ngFor="let route of componentRoutes">
+              <a class="nav-link" [routerLink]="['components', route.url]">{{route.data}}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['changelog']">Changelog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['examples']">Examples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['about']">About</a>
+        </li>
+      </ul>
+    </div>
 
+    <!-- Content -->
     <div class="col">
       <router-outlet></router-outlet>
     </div>

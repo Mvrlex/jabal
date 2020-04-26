@@ -24,7 +24,8 @@ import { AppComponent } from './app.component';
     ], {
       anchorScrolling: "enabled",
       scrollPositionRestoration: "enabled",
-      scrollOffset: [0, 64]
+      scrollOffset: [0, 64],
+      onSameUrlNavigation: 'reload'
     }),
     FontAwesomeModule,
     JabalModule

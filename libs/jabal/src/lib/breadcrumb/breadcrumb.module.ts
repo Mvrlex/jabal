@@ -31,7 +31,7 @@ const defaultRouteDataName = 'breadcrumb';
   ]
 })
 export class BreadcrumbModule {
-  static forRoot(config: {routeDataName?: string}): ModuleWithProviders {
+  static forRoot(config: {routeDataName?: string}): ModuleWithProviders<BreadcrumbModule> {
     return {
       ngModule: BreadcrumbModule,
       providers: [

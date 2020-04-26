@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { DocsGeneratorModule, NODE_CONFIG } from "@jabal/docs-generator";
+import { nodeConfig } from "./checkbox-docs.config";
+
 import { CheckboxModule } from "@jabal/jabal";
-
 import { BasicCheckboxComponent } from "./examples";
-import { DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
-
-import { docConfig } from './checkbox-docs.config';
 
 @NgModule({
   imports: [
     CommonModule,
-    CheckboxModule,
-    DocGeneratorModule.forRoot({ docConfig: docConfig })
+    DocsGeneratorModule,
+    CheckboxModule
   ],
   declarations: [
     BasicCheckboxComponent
   ],
   entryComponents: [
     BasicCheckboxComponent
+  ],
+  providers: [
+    {
+      provide: NODE_CONFIG,
+      useValue: nodeConfig
+    }
   ]
 })
 export class CheckboxDocsModule { }

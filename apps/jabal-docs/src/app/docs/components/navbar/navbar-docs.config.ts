@@ -1,4 +1,4 @@
-import { DocConfig } from "../../../core/doc-generator/doc-generator.module";
+import { ExampleComponent, MarkdownComponent, Node, TitleComponent } from "@jabal/docs-generator";
 
 // Examples
 import { BasicNavbarComponent, SlottedNavbarComponent } from "./examples";
@@ -16,42 +16,49 @@ import exampleSlottedTs from '!!raw-loader!./examples/slotted/slotted-navbar.com
 import exampleSlottedHtml from 'raw-loader!./examples/slotted/slotted-navbar.component.html';
 import exampleSlotted from 'raw-loader!./examples/slotted/slotted-navbar.md';
 
-export const docConfig: DocConfig[] = [
+export const nodeConfig: Node[] = [
   {
-    title: 'Navbar',
-    titleClass: 'display-4',
-    text: description,
-    subDocs: [
+    id: 'navbar',
+    nodes: [
+      new TitleComponent({ title: 'Navbar', titleClass: 'display-4', skipNavbar: true }),
+      new MarkdownComponent({ text: description })
+    ],
+    children: [
       {
-        title: 'Installation',
-        text: usageNavbar
+        id: 'installation',
+        nodes: [
+          new TitleComponent({ title: 'Installation' }),
+          new MarkdownComponent({ text: usageNavbar })
+        ]
       },
       {
-        title: 'Features',
-        subDocs: [
+        id: 'features',
+        children: [
           {
-            title: 'Basic',
-            text: exampleBasic,
-            example: BasicNavbarComponent,
-            code: {
-              html: exampleBasicHtml,
-              ts: exampleBasicTs
-            }
+            id: 'basic',
+            nodes: [
+              new TitleComponent({ title: 'Basic' }),
+              new MarkdownComponent({ text: exampleBasic }),
+              new BasicNavbarComponent(),
+              new ExampleComponent( { html: exampleBasicHtml, ts: exampleBasicTs })
+            ]
           },
           {
-            title: 'Slotted',
-            text: exampleSlotted,
-            example: SlottedNavbarComponent,
-            code: {
-              html: exampleSlottedHtml,
-              ts: exampleSlottedTs
-            }
+            id: 'slotted',
+            nodes: [
+              new TitleComponent({ title: 'Slotted' }),
+              new MarkdownComponent({ text: exampleSlotted }),
+              new SlottedNavbarComponent(),
+              new ExampleComponent({ html: exampleSlottedHtml, ts: exampleSlottedTs })
+            ]
           }
         ]
       },
       {
-        title: 'Troubleshooting',
-        text: troubleshooting
+        id: 'troubleshooting',
+        nodes: [
+          new TitleComponent({ title: 'Troubleshooting' })
+        ]
       }
     ]
   }

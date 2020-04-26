@@ -1,0 +1,4 @@
+<h1 class="docs-title" [class]="config.titleClass" [id]="node.id">
+  {{config.title}}
+  <a *ngIf="!config.skipNavbar" routerLink="." [fragment]="node.id">#</a>
+</h1>

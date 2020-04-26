@@ -1,0 +1,11 @@
+<tabset class="mt-4">
+  <tab heading="Template" *ngIf="config.html">
+    <markdown [data]="config.html | language : 'markup'" lineNumbers></markdown>
+  </tab>
+  <tab heading="Component" *ngIf="config.ts">
+    <markdown [data]="config.ts | language : 'typescript'" lineNumbers></markdown>
+  </tab>
+  <tab heading="Style" *ngIf="config.css">
+    <markdown [data]="config.css | language : 'css'" lineNumbers></markdown>
+  </tab>
+</tabset>

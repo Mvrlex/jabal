@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DocGeneratorModule } from "../../../core/doc-generator/doc-generator.module";
-import { docConfig } from "./<%= dasherize(name) %>-docs.config";
+import { DocsGeneratorModule, NODE_CONFIG } from "@jabal/docs-generator";
+import { nodeConfig } from "./<%= dasherize(name) %>-docs.config";
 
 @NgModule({
   imports: [
     CommonModule,
-    DocGeneratorModule.forRoot({ docConfig: docConfig })
+    DocGeneratorModule
   ],
   declarations: [],
-  entryComponents: []
+  entryComponents: [],
+  providers: [
+    {
+      provide: NODE_CONFIG,
+      useValue: nodeConfig
+    }
+  ]
 })
 export class <%= classify(name) %>DocsModule { }

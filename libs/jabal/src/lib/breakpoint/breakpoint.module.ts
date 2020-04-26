@@ -31,7 +31,7 @@ const defaultBreakpoints: Breakpoint[] = [
   ]
 })
 export class BreakpointModule {
-  static forRoot(config: {breakpoints?: Breakpoint[]}): ModuleWithProviders {
+  static forRoot(config: {breakpoints?: Breakpoint[]}): ModuleWithProviders<BreakpointModule> {
     return {
       ngModule: BreakpointModule,
       providers: [

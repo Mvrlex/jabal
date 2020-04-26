@@ -1,33 +1,51 @@
-import { DocConfig } from "../../../core/doc-generator/doc-generator.module";
+import { ExampleComponent, MarkdownComponent, Node, TitleComponent } from "@jabal/docs-generator";
+
+// Examples
 import { BasicCheckboxComponent } from "./examples";
 
-export const docConfig: DocConfig[] = [
+// Markdown
+import description from 'raw-loader!./content/desc-checkbox.md';
+import usageNavbar from 'raw-loader!./content/usage-checkbox.md';
+import troubleshooting from 'raw-loader!./content/troubleshooting-checkbox.md';
+// @ts-ignore Basic example
+import exampleBasicTs from '!!raw-loader!./examples/basic/basic-checkbox.component.ts';
+import exampleBasicHtml from 'raw-loader!./examples/basic/basic-checkbox.component.html';
+import exampleBasic from 'raw-loader!./examples/basic/basic-checkbox.md';
+
+export const nodeConfig: Node[] = [
   {
-    title: 'Checkbox',
-    titleClass: 'display-4',
-    text: require('!!raw-loader!./content/desc-checkbox.md').default,
-    subDocs: [
+    id: 'checkbox',
+    nodes: [
+      new TitleComponent({ title: 'Checkbox', titleClass: 'display-4', skipNavbar: true }),
+      new MarkdownComponent({ text: description })
+    ],
+    children: [
       {
-        title: 'Installation',
-        text: require('!!raw-loader!./content/usage-checkbox.md').default
+        id: 'installation',
+        nodes: [
+          new TitleComponent({ title: 'Installation' }),
+          new MarkdownComponent({ text: usageNavbar })
+        ]
       },
       {
-        title: 'Features',
-        subDocs: [
+        id: 'features',
+        children: [
           {
-            title: 'Basic',
-            text: require('!!raw-loader!./examples/basic/basic-checkbox.md').default,
-            example: BasicCheckboxComponent,
-            code: {
-              html: require('!!raw-loader!./examples/basic/basic-checkbox.component.html').default,
-              ts: require('!!raw-loader!./examples/basic/basic-checkbox.component.ts').default
-            }
+            id: 'basic',
+            nodes: [
+              new TitleComponent({ title: 'Basic' }),
+              new MarkdownComponent({ text: exampleBasic }),
+              new BasicCheckboxComponent(),
+              new ExampleComponent( { html: exampleBasicHtml, ts: exampleBasicTs })
+            ]
           }
         ]
       },
       {
-        title: 'Troubleshooting',
-        text: require('!!raw-loader!./content/troubleshooting-checkbox.md').default
+        id: 'troubleshooting',
+        nodes: [
+          new TitleComponent({ title: 'Troubleshooting' })
+        ]
       }
     ]
   }

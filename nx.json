@@ -12,15 +12,44 @@
   },
   "projects": {
     "jabal-docs": {
-      "tags": ["scope:docs"],
-      "implicitDependencies": ["jabal"]
+      "tags": [
+        "scope:docs"
+      ],
+      "implicitDependencies": [
+        "jabal",
+        "docs-generator"
+      ]
     },
     "jabal-docs-e2e": {
-      "tags": ["scope:docs"],
-      "implicitDependencies": ["jabal-docs"]
+      "tags": [
+        "scope:docs"
+      ],
+      "implicitDependencies": [
+        "jabal-docs"
+      ]
     },
     "jabal": {
-      "tags": ["scope:lib"]
+      "tags": [
+        "scope:lib"
+      ]
+    },
+    "docs-generator": {
+      "tags": [
+        "scope:docs"
+      ]
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
+      }
     }
   }
 }
