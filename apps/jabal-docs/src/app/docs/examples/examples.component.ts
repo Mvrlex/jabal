@@ -17,16 +17,11 @@ export class ExamplesComponent implements OnInit {
     }
   };
 
-  @ViewChild('footer', {static: true})
-  private footer: TemplateRef<any>;
-
   constructor(
-    private breakpointService: BreakpointService,
-    private insertionService: InsertionService
+    private breakpointService: BreakpointService
   ) { }
 
   ngOnInit() {
-    this.insertionService.render(this.footer);
     this.breakpointService.breakpointChange.subscribe((breakpoint) => {
       console.log(breakpoint);
     })

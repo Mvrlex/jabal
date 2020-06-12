@@ -25,6 +25,11 @@ export class InsertionComponent implements OnInit, OnDestroy, InsertionSlot {
   @Input()
   clearingStrategy: InsertionClearingStrategy = InsertionClearingStrategy.ON_NAV;
 
+  private _isActive: boolean;
+  get isActive(): boolean {
+    return this._isActive;
+  }
+
   constructor(private insertion: InsertionService) {}
 
   ngOnInit() {
@@ -37,10 +42,12 @@ export class InsertionComponent implements OnInit, OnDestroy, InsertionSlot {
 
   render(tRef: TemplateRef<any>) {
     this.insertionSlot.createEmbeddedView(tRef);
+    this._isActive = true;
   }
 
   clear() {
     this.insertionSlot.clear();
+    this._isActive = false;
   }
 
 }

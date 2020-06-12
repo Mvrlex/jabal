@@ -18,7 +18,7 @@ const components = [
   BreakpointModule,
   CheckboxModule,
   FooterModule,
-  InsertionModule,
+  InsertionModule.forRoot(),
   JsonEditorModule,
   NavbarModule,
   RadioModule,

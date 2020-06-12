@@ -65,8 +65,9 @@ export class InsertionService {
    * {@link InsertionClearingStrategy.BOTH} it will clear the content before rendering.
    * @param templateRef - the content to render
    * @param slotId - the slot into which to render the content
+   * @return name of the newly rendered slot
    */
-  render(templateRef: TemplateRef<any>, slotId = 'default') {
+  render(templateRef: TemplateRef<any>, slotId = 'default'): string {
     const slot: InsertionSlot = this.slots.get(slotId);
     if (slot) {
       if (
@@ -74,6 +75,7 @@ export class InsertionService {
         slot.clearingStrategy === InsertionClearingStrategy.BOTH
       ) slot.clear();
       slot.render(templateRef);
+      return slotId;
     } else {
       throw new Error(
         `Slot "${slotId}" does not exist.`
@@ -86,7 +88,7 @@ export class InsertionService {
    * @param slotIds - the slots which to clear the content from.
    */
   clear(...slotIds: string[]) {
-    for (let slotId of slotIds) {
+    for (const slotId of slotIds) {
       const slot: InsertionSlot = this.slots.get(slotId);
       if (slot) {
         slot.clear();
@@ -99,6 +101,21 @@ export class InsertionService {
   }
 
   /**
+   * Checks if a {@link InsertionSlot} is currently rendering.
+   * @param slotId - the id of the slot to check the status from.
+   */
+  isActive(slotId: string) {
+    const slot: InsertionSlot = this.slots.get(slotId);
+    if (slot) {
+      return slot.isActive;
+    } else {
+      throw new Error(
+        `Slot "${slotId}" does not exist.`
+      );
+    }
+  }
+
+  /**
    * Subscribes to Events from the Router for the clearing strategy
    * {@link InsertionClearingStrategy.ON_NAV} or {@link InsertionClearingStrategy.BOTH}.
    */
@@ -106,7 +123,7 @@ export class InsertionService {
     this.router.events.pipe(
       filter((event: RouterEvent) => event instanceof ResolveStart)
     ).subscribe(() => {
-      for (let [key, slot] of this.slots) {
+      for (const [key, slot] of this.slots) {
         if (
           slot.clearingStrategy === InsertionClearingStrategy.ON_NAV ||
           slot.clearingStrategy === InsertionClearingStrategy.BOTH

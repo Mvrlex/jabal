@@ -20,4 +20,8 @@ export interface InsertionSlot {
    * Function for clearing the redered content.
    */
   clear: () => void;
+  /**
+   * If the slot is currently rendering a view.
+   */
+  isActive: boolean;
 }
